@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Reddit Search</title>
+        <script src="https://www.w3schools.com/lib/w3.js"></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    </head>
+<body>
+
+
+
+<div id="id01" class="w3-container" style="">
+    <div id="id01" class="w3-row content" style="">
+        <h1 class="text-header">{{title}}</h1>
+        <hr>
+        <div class="text-body">{{body}}</div>
+        <!-- <textarea class="w3-col" rows="40">{{_______selftext}}</textarea> -->
+    </div>
+</div>
+
+
+
+<script>
+
+    var id = location.search.substring(4);
+    w3.getHttpObject("https://api.pushshift.io/reddit/submission/search?ids="+id, showAll);
+
+    function showAll(myObject) {
+        var myArray = myObject.data[0];
+
+        var title = myArray["title"];
+        var body = myArray["selftext"];
+        
+        body = mdToHtml(body);
+        body = readable(body);
+
+        myArray["body"] = body;
+
+        w3.displayObject("id01", myArray);
+    }
+
+    function mdToHtml(text){
+        //bold
+        var bold = /\*\*(.*?)\*\*/gm;
+        var text = text.replace(bold, '<strong>$1</strong>');
+        //italics
+        var italics = /\*(.*?)\*/gm;
+        var text = text.replace(italics, '<em>$1</em>');           
+        return text;
+    }
+
+    function readable(text) {
+        text = text.replace("\t", " ");
+
+        var urlRegex =/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~|])/ig;
+        return text.replace(urlRegex, function(url) {
+            return '<a href="' + url + '">Link</a>';
+        });
+        //return text;
+    }
+
+</script>
+
+<style>
+    .text-header, .text-body{
+        font-family: monospace;
+    }
+    .text-header {
+        font-size: larger;
+        font-weight: bold;
+    }
+    .text-body {
+        white-space: pre-wrap;
+        margin-bottom: 100px;
+    }
+    body {
+        color: #aaa;
+        background: #333;
+    }
+    
+    a {
+        color: #ddd;
+    }
+    
+    a:hover {
+        color: unset;
+    }
+</style>
+
+</body>
+
+</html>
