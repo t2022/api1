@@ -9,15 +9,11 @@
 <body>
 
     <div id="searchbox" class="w3-container w3-padding-16 w3-border-bottom" style="position: fixed; width: 100%; background: #554;">
-
         <form>
-            <input placeholder="term" id="searchterm" /> <input placeholder="r/subreddit" id="subreddit" /> <input placeholder="u/name" id="username" /> Q's?: <input type="checkbox" id="submission" />
+            <input placeholder="term" id="searchterm" /> <input placeholder="sub" id="subreddit" /> <input placeholder="name" id="username" /> Q's?: <input type="checkbox" id="submission" />
             <br><a class="w3-button w3-black" onclick="searchReddit();">Search</a><span style="float: right;" id="todays-date"> </span>
-
         </form>
     </div>
-
-
 
     <ol id="id01" class="w3-container w3-ul" style="padding-top: 170px;">
         <li class="w3-col s6" w3-repeat="data" style="font-size: small">
@@ -32,7 +28,6 @@
     <script>
         var d = new Date();
         document.getElementById("todays-date").innerHTML = "Today: " + d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate() + ", " + d.getHours() + ":" + d.getMinutes();
-
 
         function searchReddit() {
             var term = document.getElementById("searchterm").value;
