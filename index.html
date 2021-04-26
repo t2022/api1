@@ -1,9 +1,5 @@
 <!DOCTYPE html>
 <html>
-<title>Reddit Search</title>
-<script src="https://www.w3schools.com/lib/w3.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1"><!DOCTYPE html>
-<html>
 <title>API Search</title>
 <script src="https://www.w3schools.com/lib/w3.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -160,88 +156,6 @@ a {
 }
 
 </style>
-
-</body>
-
-</html>
-
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="icon" href="favicon.png">
-
-<body>
-
-    <div id="searchbox" class="w3-container w3-padding-16 w3-border-bottom" style="position: fixed; width: 100%; background: #554;">
-        <form>
-            <input placeholder="term" id="searchterm" /> <input placeholder="sub" id="subreddit" /> <input placeholder="name" id="username" /> Q's?: <input type="checkbox" id="submission" />
-            <br><a class="w3-button w3-black" onclick="searchReddit();">Search</a><span style="float: right;" id="todays-date"> </span>
-        </form>
-    </div>
-
-    <ol id="id01" class="w3-container w3-ul" style="padding-top: 170px;">
-        <li class="w3-col s6" w3-repeat="data" style="font-size: small">
-            <textarea class="w3-col content">{{body}}</textarea><br>
-            <span class="w3-small links">
-                <a href="read.html?id={{id}}">read text</a> | <a href="https://old.reddit.com{{permalink}}" target="_blank">direct link </a> | <small>Created: {{created_utc}}</small>
-                <br><a href="https://old.reddit.com/r/{{subreddit}}" target="_blank">r/{{subreddit}}</a> | <a href="https://old.reddit.com/u/{{author}}" target="_blank">u/{{author}} </a> | ID: {{id}} | <a href="https://removeddit.com{{permalink}}" target="_blank">removeddit</a>
-            </span>
-        </li>
-    </ol>
-
-    <script>
-        var d = new Date();
-        document.getElementById("todays-date").innerHTML = "Today: " + d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate() + ", " + d.getHours() + ":" + d.getMinutes();
-
-        function searchReddit() {
-            var term = document.getElementById("searchterm").value;
-            var user = document.getElementById("username").value;
-            var sub = document.getElementById("subreddit").value;
-            var submission = document.getElementById("submission").checked;
-            var n = Date.now();
-            if (submission) {
-                console.log(submission);
-                w3.getHttpObject("https://api.pushshift.io/reddit/submission/search?author=" + user + "&limit=1000&subreddit=" + sub + "&q=" + term, showAll);
-            } else
-                w3.getHttpObject("https://api.pushshift.io/reddit/search?author=" + user + "&limit=1000&subreddit=" + sub + "&q=" + term, showAll);
-        }
-
-        function showAll(myObject) {
-            var myArray = myObject.data;
-            for (i = 0; i < myArray.length; i++) {
-                var d = new Date(myArray[i]["created_utc"] * 1000);
-                myArray[i]["created_utc"] = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate() + ", " + d.getHours() + ":" + d.getMinutes();
-            }
-            var submission = document.getElementById("submission").checked;
-            if (submission) {
-                for (i = 0; i < myArray.length; i++) {
-                    myArray[i]["permalink"] = "/" + myArray[i]["id"];
-                    myArray[i]["body"] = myArray[i]["title"] + "\n\n" + myArray[i]["selftext"];
-                }
-            }
-            w3.displayObject("id01", myObject);
-        }
-    </script>
-
-    <style>
-        body {
-            color: #aaa;
-            background: #333;
-        }
-        
-        .content {
-            color: #eee;
-            background: #555;
-            height: 200px;
-            padding: 5px;
-        }
-        
-        .links {
-            color: #ddd;
-        }
-        
-        .links:hover {
-            color: unset;
-        }
-    </style>
 
 </body>
 
