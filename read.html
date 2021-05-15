@@ -61,30 +61,29 @@
 
     function showComments(comments) {
         var data = comments.data;
-        comments.data = [];
 
         for (i = 0; i < data.length; i++) {
-
-            data[i]["parent_id"] = data[i]["parent_id"].replace("t3_", "");
-            data[i]["parent_id"] = data[i]["parent_id"].replace("t1_", "");
 
             data[i]["body"] = mdToHtml(data[i]["body"]);
             data[i]["comment"] = readable(data[i]["body"]);
 
             data[i]["timeDiff"] = secondsToDhms(UTCTimestamp() - data[i]["created_utc"]);
 
-            term = data[i]["id"] + " > " + data[i]["parent_id"];
+
+            // data[i]["parent_id"] = data[i]["parent_id"].replace("t3_", "");
+            // data[i]["parent_id"] = data[i]["parent_id"].replace("t1_", "");
+            // term = data[i]["id"] + " > " + data[i]["parent_id"];
 
             //if parent is post, top level
             //else create recursive loop
 
-            if(data[i]["parent_id"] == id) {
-                data[i]["level"] = "level-1";
-                comments.data[i+"top"] = data[i];
-            } else {
-                data[i]["level"] = "level-2";
-                comments.data[i+"child"] = data[i];
-            }
+            // if(data[i]["parent_id"] == id) {
+            //     data[i]["level"] = "level-1";
+            //     comments.data[i+"top"] = data[i];
+            // } else {
+            //     data[i]["level"] = "level-2";
+            //     comments.data[i+"child"] = data[i];
+            // }
         }
 
         console.log(comments.data);
