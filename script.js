@@ -41,7 +41,6 @@ function showAll(myObject) {
         var d = new Date(myArray[i]["created_utc"] * 1000);
         myArray[i]["created_utc"] = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate() + ", " + d.getHours() + ":" + d.getMinutes();
         myArray[i]["postId"] = myArray[i]["link_id"] ? myArray[i]["link_id"].replace("t3_", "") : myArray[i]["id"];
-        myArray[i]["bodyLength"] = myArray[i]["body"].length;
     }
     var submission = document.getElementById("submission").checked;
     if (submission) {
