@@ -1,0 +1,22 @@
+{
+    "dir": "ltr",
+    "lang": "en",
+    "name": "API 1",
+    "display": "standalone",
+    "short_name": "API 1",
+    "theme_color": "transparent",
+    "description": "",
+    "orientation": "any",
+    "background_color": "transparent",
+    "related_applications": [],
+    "prefer_related_applications": false,
+    "icons": [{
+            "src": "images/icon_256.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        }
+    ],
+    "url": "https://t2022.github.io/api1/",
+    "start_url": "/",
+    "generated": "true"
+}

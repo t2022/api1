@@ -1,0 +1,194 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #222;
+  color: #aaa;
+  padding: 1em;
+}
+
+.container {
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
+}
+
+.text-center {
+  text-align: center;
+}
+
+#steps {
+  padding: 1em;
+  margin: unset;
+}
+
+#steps ol {
+  margin: 1em;
+}
+
+#text {
+  font-size: 3em;
+  font-weight: 900;
+}
+
+#counter {
+  font-size: 1em;
+  font-family: menlo, monospace;
+}
+
+#start-button {
+  border: 1px solid;
+  padding: 2em;
+}
+
+#breathe-counter {
+  background-color: #333;
+  border-radius: 50%;
+  height: 100%;
+  padding-top: 100%;
+  position: relative;
+}
+
+#breathe-counter>div {
+  position: absolute;
+  top: 40%;
+  margin: auto;
+  text-align: center;
+  width: 100%
+}
+
+#install-instructions {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1em;
+  cursor: pointer;
+}
+
+#install-link, #install-text {
+  text-align: center;
+  width: 100%;
+  padding: 1em;
+  background: black;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+.search-options {
+  padding: 0.5em;
+}
+
+.small-text {
+  font-size: small;
+}
+
+a {
+  color: #aaa
+}
+
+#searchbox {
+  padding: 5px;
+  width: 100%;
+  background: #554;
+}
+
+.search-fields {
+  width: 100%;
+}
+
+.search-field {
+  width: 32%;
+  padding: 0.5em;
+}
+
+#notice {
+  display: block;
+  padding: 0.5em;
+}
+
+.result {
+  margin: 0.5em 0.5em 1em 0.5em;
+  padding-bottom: 1em;
+  border-bottom: 1px solid #999
+}
+
+.content {
+    color: #eee;
+    background: #555;
+    height: 100px;
+    padding: 5px;
+    width: 100%;
+}
+
+.content:focus {
+  height: 300px;
+}
+
+.links {
+    color: #ddd;
+}
+
+.links:hover {
+    color: unset;
+}
+
+.btn {
+  background: #333;
+  padding: 5px;
+  display: inline-block;
+}
+
+
+.text-header, .text-body{
+  font-family: monospace;
+}
+.text-header {
+  font-size: larger;
+  font-weight: bold;
+}
+.text-body {
+  white-space: pre-wrap;
+  margin-bottom: 100px;
+}
+.comment-body {
+  margin-bottom: 40px;
+}
+body {
+  color: #aaa;
+  background: #333;
+}
+
+a {
+  color: #ddd;
+}
+
+a:hover {
+  color: unset;
+}
+
+.gray {
+  opacity: 50%;
+}
+
+.gray:hover {
+  opacity: unset;
+}
+
+.body-length {
+  color: yellow;
+  font-weight: bold;
+  background: green;
+  padding: 2px;
+  margin-right: 5px;
+}
