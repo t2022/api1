@@ -17,6 +17,6 @@
         }
     ],
     "url": "https://t2022.github.io/api1/",
-    "start_url": "/",
+    "start_url": "/api1/",
     "generated": "true"
 }
