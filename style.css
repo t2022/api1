@@ -14,7 +14,7 @@ html {
 body {
   background: #222;
   color: #aaa;
-  padding: 1em;
+  padding: 0.5em;
 }
 
 .container {
@@ -98,18 +98,8 @@ a {
 }
 
 #searchbox {
-  padding: 5px;
   width: 100%;
-  background: #554;
-}
-
-.search-fields {
-  width: 100%;
-}
-
-.search-field {
-  width: 32%;
-  padding: 0.5em;
+  border-bottom: 1px solid;
 }
 
 #notice {
@@ -118,17 +108,16 @@ a {
 }
 
 .result {
-  margin: 0.5em 0.5em 1em 0.5em;
+  margin-bottom: 1em;
   padding-bottom: 1em;
   border-bottom: 1px solid #999
 }
 
 .content {
-    color: #eee;
-    background: #555;
-    height: 100px;
-    padding: 5px;
-    width: 100%;
+  color: #eee;
+  background: #555;
+  padding: 5px;
+  width: 100%;
 }
 
 .content:focus {
@@ -150,8 +139,9 @@ a {
 }
 
 
-.text-header, .text-body{
-  font-family: monospace;
+.text-header, .text-body, .text-body *{
+  /* font-family: monospace; */
+  word-break: break-all;
 }
 .text-header {
   font-size: larger;
@@ -159,14 +149,10 @@ a {
 }
 .text-body {
   white-space: pre-wrap;
-  margin-bottom: 100px;
+  margin-bottom: 3em;;
 }
 .comment-body {
   margin-bottom: 40px;
-}
-body {
-  color: #aaa;
-  background: #333;
 }
 
 a {
@@ -191,4 +177,12 @@ a:hover {
   background: green;
   padding: 2px;
   margin-right: 5px;
+}
+
+.search-field {
+  padding: 0.5em
+}
+
+.p {
+  padding: 0.25em !important;
 }

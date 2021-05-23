@@ -12,44 +12,57 @@ if ("serviceWorker" in navigator) {
   }
 }
 
-
-
-
-
-
+var limit = 3000;
 
 function searchReddit() {
+    event.preventDefault();
     document.getElementById("id01").style.display = "none";
     document.getElementById("notice").innerText = "";
 
-
     var term = document.getElementById("searchterm").value;
-    var user = document.getElementById("username").value;
-    var sub = document.getElementById("subreddit").value;
+    var user = document.getElementById("username").value.replace(" ","");
+    var sub = document.getElementById("subreddit").value.replace(" ","");
     var submission = document.getElementById("submission").checked;
+
+
     var n = Date.now();
     if (submission) {
-        w3.getHttpObject("https://api.pushshift.io/reddit/submission/search?author=" + user + "&limit=1000&subreddit=" + sub + "&q=" + term, showAll);
+        w3.getHttpObject("https://api.pushshift.io/reddit/submission/search?author=" + user + "&limit=" + limit + "&subreddit=" + sub + "&q=" + term, showAll);
     } else
-        w3.getHttpObject("https://api.pushshift.io/reddit/search?author=" + user + "&limit=1000&subreddit=" + sub + "&q=" + term, showAll);
+        w3.getHttpObject("https://api.pushshift.io/reddit/search?author=" + user + "&limit=" + limit + "&subreddit=" + sub + "&q=" + term, showAll);
 }
 
 function showAll(myObject) {
-  
+    
+    
     var myArray = myObject.data;
     for (i = 0; i < myArray.length; i++) {
         var d = new Date(myArray[i]["created_utc"] * 1000);
         myArray[i]["created_utc"] = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate() + ", " + d.getHours() + ":" + d.getMinutes();
         myArray[i]["postId"] = myArray[i]["link_id"] ? myArray[i]["link_id"].replace("t3_", "") : myArray[i]["id"];
+        if(myArray[i]["body"]) myArray[i]["bodyLength"] = myArray[i]["body"].length;
     }
     var submission = document.getElementById("submission").checked;
     if (submission) {
         for (i = 0; i < myArray.length; i++) {
-            myArray[i]["permalink"] = "/" + myArray[i]["id"];
             myArray[i]["body"] = myArray[i]["title"] + "\n\n" + myArray[i]["selftext"];
             myArray[i]["bodyLength"] = myArray[i]["body"].length;
+            myArray[i]["permalink"] = "/" + myArray[i]["id"];
         }
     }
+
+    // var minLength = parseInt(document.getElementById("min-length").value);
+    // if(minLength > 0) {
+    //     for (i = 0; i < myArray.length; i++) {
+    //         if(myArray[i]["bodyLength"] < minLength) {
+    //             console.log(i, minLength, myArray[i]);
+    //             myArray.splice(i, 1); 
+    //             continue;
+    //         }
+    //     }
+    // }
+
+    myArray = sort2(myArray, "bodyLength", "desc");
 
     w3.displayObject("id01", myObject);
     
@@ -57,6 +70,16 @@ function showAll(myObject) {
       document.getElementById("id01").style.display = "";
     }
     document.getElementById("notice").innerText = myArray.length + " Results Found"
+}
+
+function sort2 (arr, key, order = "asc") {
+    
+    return arr.sort((function(index){
+        return function(a, b){
+            if(order == "desc") return (a[index] === b[index] ? 0 : (a[index] > b[index] ? -1 : 1));
+            return (a[index] === b[index] ? 0 : (a[index] < b[index] ? -1 : 1));
+        };
+    })(key))
 }
 
 function copyText(id) {

@@ -7,22 +7,24 @@
 
 <link rel='manifest' href='manifest.json'>
 <link media="all" rel="stylesheet" href="style.css" />
-<script src="https://www.w3schools.com/lib/w3.js"></script>
+<link media="all" rel="stylesheet" href="w3.css" />
+<script src="w3.js"></script>
 
 
 <body>
 
 <div id="searchbox">
-  <form>
-    <div class="search-fields">
-    <input placeholder="term" id="searchterm" class="search-field" />
-    <input placeholder="sub" id="subreddit" class="search-field" />
-    <input placeholder="name" id="username" class="search-field" />
+  <form onsubmit="searchReddit();">
+    <div class="row">
+      <input placeholder="term" id="searchterm" class="w3-col s4 search-field" />
+      <input placeholder="sub" id="subreddit" class="w3-col s4 search-field" />
+      <input placeholder="name" id="username" class="w3-col s4 search-field" />
     </div>
-    <div class="search-options small-text">
-    <span style="float: right;" id="todays-date"> </span>
-    <label for="submission">Q's?:</label> <input type="checkbox" name="submission" id="submission" />
-    <a class="btn" onclick="searchReddit();">Search</a>
+    <div class="row small-text">
+      <span style="float: right;" id="todays-date"> </span>
+      <label for="submission">Q's?:</label> <input type="checkbox" name="submission" id="submission" />
+      <!-- <label for="submission">Min Length?:</label> <input type="text" name="min-length" id="min-length" /> -->
+      <button class="w3-btn p w3-green" onclick="searchReddit();">Search</button>
     </div>
   </form>
 </div>

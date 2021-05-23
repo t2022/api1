@@ -1,57 +1,49 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Reddit Search</title>
-        <script src="https://www.w3schools.com/lib/w3.js"></script>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-        <link media="all" rel="stylesheet" href="style.css" />
-
-    </head>
+  <head>
+    <title>Reddit Search</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="w3.css">
+    <link media="all" rel="stylesheet" href="style.css" />
+  </head>
 <body>
 
+<div id="id01" class="">
 
-
-<div id="id01" class="w3-container" style="">
-    <div id="id01" class="w3-row content" style="">
-        <div><small>{{author}} in r/{{subreddit}}, {{timeDiff}} ago </small></div>
-        <h1 class="text-header">{{title}}</h1>
-        <hr>
-        <div class="text-body">{{body}}</div>
-        <!-- <textarea class="w3-col" rows="40">{{_______selftext}}</textarea> -->
-    </div>
+  <div id="id01" class="w3-row content">
+    <div><small class="gray">{{author}} in r/{{subreddit}}, <b>{{timeDiff}}</b> ago </small></div>
+    <h1 class="text-header">{{title}}</h1>
     <hr>
-    
-    <div id="comments">
-        <div w3-repeat="data" class="comment-body {{level}}">
-            <p>
-                <small class="gray"><b>{{author}}</b>, {{timeDiff}} ago &bull; <em>{{id}} > {{parent_id}}</em></small><br>
-                {{comment}}
-            </p>
-        </div>
+    <div class="text-body"><a href="{{url}}">Reddit Link</a></div>
+    <div class="text-body">{{body}}</div>
+    <!-- <textarea class="w3-col" rows="40">{{_______selftext}}</textarea> -->
+  </div>
+  <hr>
+
+  <div id="comments">
+    <div w3-repeat="data" class="comment-body {{level}}">
+      <p>
+        <small class="gray"><b>{{author}}</b>, {{timeDiff}} ago &bull; <em>{{id}} > {{parent_id}}</em></small><br>
+        {{comment}}
+      </p>
     </div>
+  </div>
 
 </div>
 
-
-
-<style>
-</style>
-
+<script src="w3.js"></script>
 <script src="script.js"></script>
-
 
 <script>
 
+var id = location.search.substring(4);
+w3.getHttpObject("https://api.pushshift.io/reddit/submission/search?ids="+id+"&limit=1000", showPost);
+console.log("post");
+w3.getHttpObject("https://api.pushshift.io/reddit/search?link_id=t3_"+id+"&limit=1000&sort_type=created_utc&sort=asc", showComments);
+console.log("comments");   
 
-    var id = location.search.substring(4);
-    w3.getHttpObject("https://api.pushshift.io/reddit/submission/search?ids="+id+"&limit=1000", showPost);
-    console.log("post");
-    w3.getHttpObject("https://api.pushshift.io/reddit/search?link_id=t3_"+id+"&limit=1000&sort_type=created_utc&sort=asc", showComments);
-    console.log("comments");   
-    
-    </script>
+</script>
 
 </body>
 
