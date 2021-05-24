@@ -35,7 +35,13 @@
   <div class="result" w3-repeat="data">
     <textarea id="{{id}}" class="content">{{body}}</textarea><br>
     <small class="small-text links gray">
-      <span class="body-length">{{bodyLength}}</span><a href="read.html?id={{postId}}">read text</a> | <a onclick="copyText('{{id}}')">copy text</a> | <a href="https://old.reddit.com{{permalink}}" target="_blank">direct link </a> | <a href="https://removeddit.com{{permalink}}" target="_blank">removeddit</a> in <a href="https://old.reddit.com/r/{{subreddit}}" target="_blank">r/{{subreddit}}</a> &bull;  by <a href="https://old.reddit.com/u/{{author}}" target="_blank">u/{{author}} </a> &bull; <small>{{created_utc}}</small> | ID: {{id}} | Parent: {{parent_id}}
+      <span class="body-length">{{bodyLength}}</span>
+      <a href="read.html?id={{postId}}">read</a>
+      <a onclick="listen('{{id}}')">listen</a>
+      <a onclick="copyText('{{id}}')">copy text</a>
+      <a href="https://old.reddit.com{{permalink}}" target="_blank">direct link </a>
+      <a href="https://removeddit.com{{permalink}}" target="_blank">removeddit</a>
+      <br>In <a href="https://old.reddit.com/r/{{subreddit}}" target="_blank">r/{{subreddit}}</a> &bull;  by <a href="https://old.reddit.com/u/{{author}}" target="_blank">u/{{author}} </a> &bull; <small>{{created_utc}}</small> | ID: {{id}} | Parent: {{parent_id}}
     </small>
   </div>
 </div>
