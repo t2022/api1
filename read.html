@@ -6,6 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="w3.css">
     <link media="all" rel="stylesheet" href="style.css" />
+    
+    <script src="w3.js"></script>
+    <script src="script.js"></script>
+
+    <script>
+
+    var id = location.search.substring(4);
+    w3.getHttpObject("https://api.pushshift.io/reddit/submission/search?ids="+id+"&limit=1000", showPost);
+    console.log("post");
+    w3.getHttpObject("https://api.pushshift.io/reddit/search?link_id=t3_"+id+"&limit=1000&sort_type=created_utc&sort=asc", showComments);
+    console.log("comments");   
+
+    </script>
+
   </head>
 <body>
 
@@ -31,19 +45,6 @@
   </div>
 
 </div>
-
-<script src="w3.js"></script>
-<script src="script.js"></script>
-
-<script>
-
-var id = location.search.substring(4);
-w3.getHttpObject("https://api.pushshift.io/reddit/submission/search?ids="+id+"&limit=1000", showPost);
-console.log("post");
-w3.getHttpObject("https://api.pushshift.io/reddit/search?link_id=t3_"+id+"&limit=1000&sort_type=created_utc&sort=asc", showComments);
-console.log("comments");   
-
-</script>
 
 </body>
 
