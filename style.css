@@ -154,6 +154,9 @@ a {
 .comment-body {
   margin-bottom: 40px;
 }
+.comment-body.child {
+  display: none;
+}
 
 a {
   color: #ddd;

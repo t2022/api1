@@ -125,21 +125,20 @@ function showComments(comments) {
     data[i]["timeDiff"] = secondsToDhms(UTCTimestamp() - data[i]["created_utc"]);
 
 
-    // data[i]["parent_id"] = data[i]["parent_id"].replace("t3_", "");
-    // data[i]["parent_id"] = data[i]["parent_id"].replace("t1_", "");
-    // term = data[i]["id"] + " > " + data[i]["parent_id"];
+    data[i]["parent_id"] = data[i]["parent_id"].replace("t3_", "");
+    data[i]["parent_id"] = data[i]["parent_id"].replace("t1_", "");
+    term = data[i]["id"] + " > " + data[i]["parent_id"];
 
-    //if parent is post, top level
-    //else create recursive loop
+    // if parent is post, top level
+    // else create recursive loop
 
-    // if(data[i]["parent_id"] == id) {
-    //   data[i]["level"] = "level-1";
-    //   comments.data[i+"top"] = data[i];
-    // } else {
-    //   data[i]["level"] = "level-2";
-    //   comments.data[i+"child"] = data[i];
-    // }
+    if(data[i]["parent_id"] == id) {
+      data[i]["level"] = "top";
+    } else {
+      data[i]["level"] = "child";
+    }
   }
+  console.log(comments);
 
   w3.displayObject("comments", comments);  
 }

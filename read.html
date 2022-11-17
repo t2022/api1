@@ -13,9 +13,9 @@
     <script>
 
     var id = location.search.substring(4);
-    w3.getHttpObject("https://api.pushshift.io/reddit/submission/search?ids="+id+"&limit=1000", showPost);
+    w3.getHttpObject("https://api.pushshift.io/reddit/submission/search?ids="+id+"&limit=10", showPost);
     console.log("post");
-    w3.getHttpObject("https://api.pushshift.io/reddit/search?link_id=t3_"+id+"&limit=1000&sort_type=created_utc&sort=asc", showComments);
+    w3.getHttpObject("https://api.pushshift.io/reddit/search?fields=author,body,created_utc,id,link_id,parent_id&sort=asc&link_id="+id+"&q=*", showComments);
     console.log("comments");   
 
     </script>
@@ -38,7 +38,7 @@
   <div id="comments">
     <div w3-repeat="data" class="comment-body {{level}}">
       <p>
-        <small class="gray"><b>{{author}}</b>, {{timeDiff}} ago &bull; <em>{{id}} > {{parent_id}}</em></small><br>
+        <small class="gray"><b>Comment by: {{author}}</b></small><br>
         {{comment}}
       </p>
     </div>
